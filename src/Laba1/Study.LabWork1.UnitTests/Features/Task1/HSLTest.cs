@@ -11,7 +11,9 @@ namespace Study.LabWork1.UnitTests.Features.Task1
         /// <summary>
         /// тест проверяет что конструктор правильно работает с ограничениями
         /// </summary>
+
         [Test]
+
         public void Constructor()
         {
             var color = new HSL(400, 150, -10);
@@ -19,6 +21,7 @@ namespace Study.LabWork1.UnitTests.Features.Task1
             Assert.That(color.Saturation, Is.LessThanOrEqualTo(100));
             Assert.That(color.Lightness, Is.GreaterThanOrEqualTo(0));
         }
+
         /// <summary>
         /// проверка перегрузки оператора сложения
         /// </summary>
@@ -30,6 +33,7 @@ namespace Study.LabWork1.UnitTests.Features.Task1
             var result = a + b;
             Assert.That(result.Hue, Is.EqualTo(150));
         }
+
         /// <summary>
         /// тест проверяет что перевод в RGB возвращает значения в предалах 0-255
         /// </summary>
@@ -42,6 +46,7 @@ namespace Study.LabWork1.UnitTests.Features.Task1
             Assert.That(rgb.G, Is.InRange(0, 255));
             Assert.That(rgb.B, Is.InRange(0, 255));
         }
+
         /// <summary>
         /// тест проверяет правильность формата HEX и что он начинается с #
         /// </summary>
@@ -52,6 +57,7 @@ namespace Study.LabWork1.UnitTests.Features.Task1
             var hex = color.ToHEX();
             Assert.That(hex.StartsWith("#"));
         }
+
         /// <summary>
         /// тест проверяет правильность перегрузки оператора ра
         /// </summary>

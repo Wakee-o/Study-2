@@ -7,24 +7,28 @@ namespace Study.LabWork1.Features.Task1
     /// <summary>
     /// Класс, который представляет цвет в формате HSL
     /// </summary>
+
     public class HSL
     {
         
         public double Hue { get; }
         public double Saturation { get; }
         public double Lightness { get; }
+
         /// <summary>
         /// конструктор
         /// </summary>
         /// <param name="h"></param>
         /// <param name="s"></param>
         /// <param name="l"></param>
+
         public HSL(double h, double s, double l)
         {
             Hue = NormalizeHue(h);
             Saturation = Clamp(s, 0, 100);
             Lightness = Clamp(l, 0, 100);
         }
+
         /// <summary>
         /// метод для ограничения в диапозоне
         /// </summary>
@@ -36,11 +40,13 @@ namespace Study.LabWork1.Features.Task1
         {
             return Math.Max(min, Math.Min(max, value));
         }
+
         /// <summary>
         /// метод для HUE
         /// </summary>
         /// <param name="h"></param>
         /// <returns></returns>
+
         private static double NormalizeHue(double h)
         {
             h = h % 360;
@@ -65,60 +71,70 @@ namespace Study.LabWork1.Features.Task1
                            a.Saturation + b.Saturation,
                            a.Lightness + b.Lightness);
         }
+
         /// <summary>
         /// преегрузка вычитание
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
+
         public static HSL operator -(HSL a, HSL b)
         {
             return new HSL(a.Hue - b.Hue,
                            a.Saturation - b.Saturation,
                            a.Lightness - b.Lightness);
         }
+
         /// <summary>
         /// перегрузка умножение
         /// </summary>
         /// <param name="a"></param>
         /// <param name="k"></param>
         /// <returns></returns>
+
         public static HSL operator *(HSL a, double k)
         {
             return new HSL(a.Hue * k,
                            a.Saturation * k,
                            a.Lightness * k);
         }
+
         /// <summary>
         /// перегрузка деления
         /// </summary>
         /// <param name="a"></param>
         /// <param name="k"></param>
         /// <returns></returns>
+
         public static HSL operator /(HSL a, double k)
         {
             return new HSL(a.Hue / k,
                            a.Saturation / k,
                            a.Lightness / k);
         }
+
         /// <summary>
         /// перегрузка равенство
         ///</summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
+
         public static bool operator ==(HSL a, HSL b)
         {
             return a.Hue == b.Hue &&
                    a.Saturation == b.Saturation &&
                    a.Lightness == b.Lightness;
         }
+
         /// <summary>
         /// перегрузка неравенство
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
+
         public static bool operator !=(HSL a, HSL b)
         {
             return !(a == b);
@@ -135,10 +151,12 @@ namespace Study.LabWork1.Features.Task1
         {
             return HashCode.Combine(Hue, Saturation, Lightness);
         }
+
         /// <summary>
         /// из HSL в RGB
         /// </summary>
         /// <returns></returns>
+
         public (byte R, byte G, byte B) ToRGB()
         {
             double h = Hue / 360;
@@ -175,10 +193,12 @@ namespace Study.LabWork1.Features.Task1
 
             return p;
         }
+
         /// <summary>
         /// перевод в HEX
         /// </summary>
         /// <returns></returns>
+
         public string ToHEX()
         {
             var (r, g, b) = ToRGB();
